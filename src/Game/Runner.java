@@ -3,6 +3,7 @@ package Game;
 import People.Person;
 import Rooms.Room;
 import Rooms.WinningRoom;
+import Rooms.GameRoom;
 
 import java.util.Scanner;
 
@@ -10,7 +11,7 @@ public class Runner {
 	
 
 	private static boolean gameOn = true;
-	
+
 	public static void main(String[] args)
 	{
 		Room[][] building = new Room[5][5];
@@ -23,15 +24,19 @@ public class Runner {
 				building[x][y] = new Room(x,y);
 			}
 		}
-		
-		//Create a random winning room.
+
+		//Create a random winning room or a gameroom.
 		int x = (int)(Math.random()*building.length);
 		int y = (int)(Math.random()*building.length);
 		building[x][y] = new WinningRoom(x, y);
-		 
+		int a = (int)(Math.random()*building.length);
+		int b = (int)(Math.random()*building.length);
+		building[a][b] = new GameRoom(a,b);
 		 //Setup player 1 and the input scanner
-		Person player1 = new Person("FirstName", "FamilyName", 0,0);
-		building[0][0].enterRoom(player1);
+		int n = (int)(Math.random()*building.length);
+		int m = (int)(Math.random()*building.length);
+		Person player1 = new Person("FirstName", "FamilyName", building[n],building[m]);
+		building[n][m].enterRoom(player1);
 		Scanner in = new Scanner(System.in);
 		while(gameOn)
 		{
