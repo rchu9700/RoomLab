@@ -8,14 +8,14 @@ import Rooms.GameRoom;
 import java.util.Scanner;
 
 public class Runner {
-	
+
 
 	private static boolean gameOn = true;
 
 	public static void main(String[] args)
 	{
 		Room[][] building = new Room[5][5];
-		
+
 		//Fill the building with normal rooms
 		for (int x = 0; x<building.length; x++)
 		{
@@ -25,18 +25,17 @@ public class Runner {
 			}
 		}
 
-		//Create a random winning room or a gameroom.
+		//Create a random winning room.
 		int x = (int)(Math.random()*building.length);
 		int y = (int)(Math.random()*building.length);
 		building[x][y] = new WinningRoom(x, y);
 		int a = (int)(Math.random()*building.length);
 		int b = (int)(Math.random()*building.length);
-		building[a][b] = new GameRoom(a,b);
-		 //Setup player 1 and the input scanner
-		int n = (int)(Math.random()*building.length);
-		int m = (int)(Math.random()*building.length);
-		Person player1 = new Person("FirstName", "FamilyName", building[n],building[m]);
-		building[n][m].enterRoom(player1);
+		building[a][b] = new GameRoom(a ,b);
+
+		//Setup player 1 and the input scanner
+		Person player1 = new Person("FirstName", "FamilyName", 0,0);
+		building[0][0].enterRoom(player1);
 		Scanner in = new Scanner(System.in);
 		while(gameOn)
 		{
@@ -45,13 +44,13 @@ public class Runner {
 			if(validMove(move, player1, building))
 			{
 				System.out.println("Your coordinates: row = " + player1.getxLoc() + " col = " + player1.getyLoc());
-				
+
 			}
 			else {
 				System.out.println("Please choose a valid move.");
 			}
-			
-			
+
+
 		}
 		in.close();
 	}
@@ -115,7 +114,7 @@ public class Runner {
 				}
 			default:
 				break;
-					
+
 		}
 		return true;
 	}
@@ -123,7 +122,7 @@ public class Runner {
 	{
 		gameOn = false;
 	}
-	
+
 
 
 }
