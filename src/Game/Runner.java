@@ -4,7 +4,6 @@ import People.Person;
 import Rooms.Room;
 import Rooms.WinningRoom;
 import Rooms.GameRoom;
-import Board.Board;
 
 import java.util.Scanner;
 
