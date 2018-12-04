@@ -7,12 +7,14 @@ public class Board {
     public Board(Room[][] building) {
         this.building = building;
     }
-    public void toString() {
+    public void print() {
+        String row = "";
         for (int i = 0; i < building.length; i++) {
+            row = "";
             for (int j = 0; j < building[i].length; j++) {
-                System.out.print(building[i][j]);
+                row = row + building[i][j].toString();
             }
-            System.out.println();
+            System.out.println(row);
         }
     }
 }
